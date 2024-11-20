@@ -1,0 +1,23 @@
+{
+  "name": "mp-vue-scoped",
+  "version": "1.0.0",
+  "description": "实现微信小程序的scoped功能",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jia-wink/mp-vue-scoped.git"
+  },
+  "keywords": [
+    "taro",
+    "scoped"
+  ],
+  "author": "https://github.com/jia-wink",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jia-wink/mp-vue-scoped/issues"
+  },
+  "homepage": "https://github.com/jia-wink/mp-vue-scoped#readme"
+}
