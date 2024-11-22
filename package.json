@@ -1,7 +1,7 @@
 {
-  "name": "mp-vue-scoped",
-  "version": "1.0.0",
-  "description": "实现微信小程序的scoped功能",
+  "name": "taro-vue-scoped",
+  "version": "1.0.2",
+  "description": "实现taro微信小程序的vue-scoped功能",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

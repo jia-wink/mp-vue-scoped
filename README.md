@@ -4,7 +4,7 @@
 
 ### 插件意义
 
-由于目前taro for vue不支持vue的css scoped，所以通过webpecak插件的形式实现类似的效果
+由于目前taro for vue在小程序不支持vue-scoped，所以通过webpack插件的形式实现类似的效果
 
 
 
