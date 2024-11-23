@@ -24,9 +24,14 @@ function getWrapperClassName(filePath) {
   return fileClassName.find((item) => item.file === filePath).className;
 }
 function processTemplateContent(templateElement, wrapperClassName) {
-  if (templateElement.firstElementChild) {
-    templateElement.firstElementChild.classList.add(wrapperClassName);
+  const dom = new JSDOM();
+  const wrapperDiv = dom.window.document.createElement('div');
+  wrapperDiv.classList.add(wrapperClassName);
+  while (templateElement.firstChild) {
+    wrapperDiv.appendChild(templateElement.firstChild);
   }
+  templateElement.innerHTML = '';
+  templateElement.appendChild(wrapperDiv);
   return templateElement.innerHTML;
 }
 function fixedTemplate(content) {
@@ -34,11 +39,9 @@ function fixedTemplate(content) {
   function convertTagName(tagName) {
     return tagName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
   }
-
   // 使用一个正则表达式一次性匹配所有标签
   content = content.replace(/<([A-Za-z0-9-]+)(\s[^>]*)?(\/?)>/gi, (match, p1, p2, p3) => {
     const convertedTag = convertTagName(p1);
-
     // 如果是自闭合标签，直接返回成对标签
     if (p3.trim() === '/') {
       return `<${convertedTag}${p2 ? p2 : ''}></${convertedTag}>`;
@@ -47,7 +50,6 @@ function fixedTemplate(content) {
       return `<${convertedTag}${p2 ? p2 : ''}>`;
     }
   });
-
   // 处理成对标签的闭合部分
   content = content.replace(/<\/([A-Za-z0-9-]+)>/gi, (match, p1) => {
     const convertedTag = convertTagName(p1);
@@ -72,7 +74,7 @@ module.exports = function (source) {
     const tempLateContent = fixedTemplate(descriptor.template.content);
     const dom = new JSDOM(`<body>${tempLateContent}</body>`);
     const templateElement = dom.window.document.body;
-    if (!templateElement.firstElementChild?.classList.contains('v-scoped')) {
+    if (!/v-scoped/.test(templateElement.firstElementChild.className)) {
       descriptor.template.content = processTemplateContent(templateElement, wrapperClassName);
     } else {
       descriptor.template.content = templateElement.innerHTML;
