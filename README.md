@@ -4,7 +4,7 @@
 
 ### 插件意义
 
-由于目前taro for vue在小程序不支持vue-scoped，所以通过webpack插件的形式实现类似的效果
+由于目前taro for vue在小程序不支持vue-scoped，所以通过webpack插件的形式实现类似的效果。
 
 
 
@@ -46,3 +46,7 @@ mini: {
 - [ ] 实现vue的`:deep()`深度选择器功能
 
 > 目前这个插件仅仅是处于能用的阶段，并没有完整的实现原生vue的scoped全部功能。欢迎加入共建！
+
+
+
+最后感谢一下导师[佛理](https://github.com/LeeSamFong)的帮助，大家可以去支持一下他的开源项目（自称要干掉尤大大的男人）
